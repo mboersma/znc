@@ -6,7 +6,7 @@ MAINTAINER Matt Boersma <matt@sprout.org>
 ENV DEBIAN_FRONTEND noninteractive
 
 # install ZNC build prerequisites
-RUN apt-get install -yq --force-yes g++ libssl-dev make
+RUN apt-get install -yq --force-yes coreutils g++ libssl-dev make
 # build and install ZNC
 ADD http://znc.in/releases/znc-1.2.tar.gz /
 RUN tar xzvf znc-1.2.tar.gz
