@@ -1,0 +1,7 @@
+# Sublime Text droppings
+*.sublime-project
+*.sublime-workspace
+
+# Vagrant testing artifacts
+.vagrant/
+Vagrantfile
