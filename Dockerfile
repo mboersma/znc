@@ -10,18 +10,18 @@ RUN apt-get update && \
 	apt-get install -yq --force-yes coreutils g++ libssl-dev make
 
 # build and install ZNC
-ADD http://znc.in/releases/znc-1.4.tar.gz /opt/
-RUN cd /opt && tar xzvf znc-1.4.tar.gz
-RUN cd /opt/znc-1.4 && ./configure && make && make install
+ADD http://znc.in/releases/znc-1.6.0.tar.gz /opt/
+RUN cd /opt && tar xzvf znc-1.6.0.tar.gz
+RUN cd /opt/znc-1.6.0 && ./configure && make && make install
 
 # clean up after the build
-RUN rm -rf znc-1.4*
+RUN rm -rf znc-1.6.0*
 RUN apt-get remove -yq g++ libssl-dev make
 RUN apt-get autoremove -yq && apt-get clean
 
 # run ZNC as an unprivileged user
 RUN useradd -m -d /opt/znc znc
-ADD run /opt/znc/run
+COPY run /opt/znc/run
 RUN chmod +x /opt/znc/run
 RUN chown -R znc:znc /opt/znc
 
